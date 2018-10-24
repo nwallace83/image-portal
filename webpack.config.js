@@ -5,16 +5,16 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-    entry: "./src/front/index.js",
+    entry: "./src/client/index.js",
     output: {
         path: path.resolve(__dirname,'./dist'),
         filename: "bundle.[hash].js",
     },
     plugins: [
-        new CleanWebpackPlugin(['dist/*.js', 'dist/*.html'],{verbose: true}),
+        new CleanWebpackPlugin(['dist/bundle*.js', 'dist/*.html'],{verbose: true}),
         new webpack.ProvidePlugin({ React: "react" }),
         new HtmlWebPackPlugin({
-            template: '!!html-loader!src/front/index.html',
+            template: '!!html-loader!src/client/index.html',
             filename:'index.html',
             title: 'My React Project',
             inject: 'body'
@@ -34,7 +34,7 @@ module.exports = {
                     extensions: ['.js','.jsx']
                 },
                 exclude: /node_modules/,
-                use: {
+                include:/src\/client/,use: {
                     loader: 'babel-loader'
                 }
             },
