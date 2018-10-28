@@ -1,8 +1,7 @@
 import React from 'react';
-import MyForm from './myForm/MyForm';
 
 const App = () => (
-    <MyForm />
+    <div>App component</div>
 );
 
 export default App;
